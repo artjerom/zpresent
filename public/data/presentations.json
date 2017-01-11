@@ -1,0 +1,36 @@
+[
+  {
+    "name": "about",
+    "slides": [
+      {
+        "imgUrl": "img",
+        "order": 1,
+        "content": "...",
+        "color": "#fff"
+      },
+      {
+        "imgUrl": "img-2",
+        "order": 2,
+        "content": "... ...",
+        "color": "red"
+      }
+    ]
+  },
+  {
+    "name": "test",
+    "slides": [
+      {
+        "imgUrl": "img",
+        "order": 1,
+        "content": "...",
+        "color": "#fff"
+      },
+      {
+        "imgUrl": "img-2",
+        "order": 2,
+        "content": "... ...",
+        "color": "red"
+      }
+    ]
+  }
+]

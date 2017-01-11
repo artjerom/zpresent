@@ -1,0 +1,16 @@
+extends ../layout
+
+block main
+    .ui.large.menu#jsMenu
+        a.item(href='/admin') Главная
+        a.item(href='/admin/upload') Загрузить изображение
+        .right.menu
+            .item
+                a.ui.positive.button(href='/') Создать
+            .item
+                a.ui.primary.button(href='/') Просмотр
+    .ui.container
+        h2= title
+        block content-admin
+block script
+    script(src='/javascripts/admin.js')

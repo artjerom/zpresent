@@ -1,0 +1,65 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+.admin {
+  position: absolute;
+  bottom: 2%;
+  left: 2%;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(30, 30, 30, .2);
+  font-size: 1.7em;
+  color: rgba(30, 30, 30, .7);
+}
+.admin i {
+  position: relative;
+  top: 15px;
+  left: 10px;
+}
+
+.reveal .progress {
+  height: 6px;
+  background-color: rgba(30, 30, 30, .2);
+}
+
+.reveal .progress span {
+  background-color: #222;
+}
+
+/*Админка*/
+#upImages {
+
+}
+
+#jsImages {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+#jsImages li {
+  padding: 15px;
+  background-color: rgba(30, 30, 30, .1);
+  border-radius: 10px;
+  box-shadow: 0 0 2px 0 #eee;
+}
+
+#jsImages li img {
+  width: 200px;
+  height: 200px;
+}
+
+/*Список презентаций*/
+.presentations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
+  padding: 10px;
+  border-top: 2px dashed #eee;
+}
