@@ -1,6 +1,8 @@
 [
   {
+    "id": 1,
     "name": "about",
+    "active": false,
     "slides": [
       {
         "imgUrl": "img",
@@ -13,18 +15,20 @@
     ]
   },
   {
-    "name": "test",
+    "id": 2,
+    "name": "тест",
+    "active": true,
     "slides": [
       {
-        "imgUrl": "assets/images/test_slide-1",
+        "imgUrl": "/images/test_slide-1.jpg",
         "order": 1
       },
       {
-        "imgUrl": "assets/images/test_slide-2",
+        "imgUrl": "/images/test_slide-2.jpg",
         "order": 2
       },
       {
-        "imgUrl": "assets/images/test_slide-3",
+        "imgUrl": "/images/test_slide-3.jpg",
         "order": 3
       }
     ]

@@ -2,9 +2,12 @@ extends layout
 
 block main
   .reveal
-    each slide in data.slides
-      .slides
-        section(data-background=slide.imgUrl)
+    .slides
+      each p in data
+        - if (p.active)
+          each slide in p.slides
+            section(data-background=slide.imgUrl)
+
   a.admin(href='/admin')
     i.desktop.icon
 block script

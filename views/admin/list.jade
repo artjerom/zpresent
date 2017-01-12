@@ -1,10 +1,10 @@
 extends admin
 
 block content-admin
-    .presentations
+    .main
         each p in data
             .ui.card
-                a.image(href='/admin/present/' + p.name)
-                    img(src='/' + p.slides[0].imgUrl)
+                a.image(href='/admin/present/' + p.id)
+                    img(src=p.slides[0].imgUrl)
                 .content
-                    a.header(href='/admin/present/' + p.name)= p.name
+                    a.header(href='/admin/present/' + p.id)= p.name
