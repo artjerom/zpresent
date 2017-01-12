@@ -1,18 +1,12 @@
 extends admin
 
 block content-admin
-    h2 Презентация: #{name}
-    .presentations
+    h2 Редактирование презентации
+    .main
         each slide in data.slides
             .ui.card
                 .image
                     img(src=slide.imgUrl)
-                .content
-                    .description
-                        p= slide.content
-                .ui.form
-                    .field
-                        textarea(rows='3' placeholder='текст слайда ...' style='resize: none')
                 select(name='order' class='ui dropdown')
                     option(value='') Порядок
                     each i in slide

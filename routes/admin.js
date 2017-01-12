@@ -5,10 +5,11 @@ var formidable = require('formidable');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 
+// var PresentRepository = require(__dirname + '/models/presentations.js');
 var dataPresent = require(__dirname + '/../public/data/presentations.json');
 var dataImages = require(__dirname + '/../public/data/images.json');
 
-/* GET users listing. */
+
 router.get('/', function(req, res) {
   res.render('admin/list', {
     title: 'Список презентаций',
@@ -22,14 +23,23 @@ router.get('/upload', function (req, res) {
   });
 });
 
-router.get('/present/:name', function (req, res) {
-  var model = dataPresent;
+router.get('/present/:id', function (req, res) {
+  var presentId = dataPresent,
+      id = req.params.id;
+  var filtered = presentId.filter(function (n) {
+    return n.id == req.params.id;
+  });
+
   res.render('admin/view-present', {
-    name: req.params.name,
-    viewPresent: true,
-    data: model.find(function () {
-      return name = req.params.name;
-    })
+    addSlide: true,
+    data: filtered[0]
+  });
+});
+
+router.get('/create', function (req, res) {
+  res.render('admin/create', {
+    title: "Создать презентацию",
+    data: dataPresent
   });
 });
 

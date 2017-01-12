@@ -5,8 +5,10 @@ var dataPresent = require(__dirname + '/../public/data/presentations.json');
 
 /* GET home page. */
 router.get('/', function(req, res) {
+
   res.render('presentation', {
-    title: "Презентация"
+    title: "Презентация",
+    data: dataPresent
   });
 });
 

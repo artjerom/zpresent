@@ -1,35 +1,35 @@
 [
   {
+    "id": 1,
     "name": "about",
+    "active": false,
     "slides": [
       {
         "imgUrl": "img",
-        "order": 1,
-        "content": "Контент 1 слайда",
-        "color": "#fff"
+        "order": 1
       },
       {
         "imgUrl": "img-2",
-        "order": 2,
-        "content": "Контент 2 слайда ...",
-        "color": "red"
+        "order": 2
       }
     ]
   },
   {
-    "name": "test",
+    "id": 2,
+    "name": "тест",
+    "active": true,
     "slides": [
       {
-        "imgUrl": "img",
-        "order": 1,
-        "content": "...",
-        "color": "#fff"
+        "imgUrl": "/images/test_slide-1.jpg",
+        "order": 1
       },
       {
-        "imgUrl": "img-2",
-        "order": 2,
-        "content": "... ...",
-        "color": "red"
+        "imgUrl": "/images/test_slide-2.jpg",
+        "order": 2
+      },
+      {
+        "imgUrl": "/images/test_slide-3.jpg",
+        "order": 3
       }
     ]
   }
