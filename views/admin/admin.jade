@@ -5,7 +5,7 @@ block main
         a.item(href='/admin') Главная
         a.item(href='/admin/upload') Загрузить изображение
         .right.menu
-            - if (viewPresent)
+            - if (addSlide)
                 .item
                     span.ui.positive.button#addSlide() Добавить слайд
             .item

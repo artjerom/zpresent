@@ -26,7 +26,7 @@ router.get('/present/:name', function (req, res) {
   var model = dataPresent;
   res.render('admin/view-present', {
     name: req.params.name,
-    viewPresent: true,
+    addSlide: true,
     data: model.find(function () {
       return name = req.params.name;
     })

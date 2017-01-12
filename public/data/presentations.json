@@ -4,15 +4,11 @@
     "slides": [
       {
         "imgUrl": "img",
-        "order": 1,
-        "content": "Контент 1 слайда",
-        "color": "#fff"
+        "order": 1
       },
       {
         "imgUrl": "img-2",
-        "order": 2,
-        "content": "Контент 2 слайда ...",
-        "color": "red"
+        "order": 2
       }
     ]
   },
@@ -20,16 +16,16 @@
     "name": "test",
     "slides": [
       {
-        "imgUrl": "img",
-        "order": 1,
-        "content": "...",
-        "color": "#fff"
+        "imgUrl": "assets/images/test_slide-1",
+        "order": 1
       },
       {
-        "imgUrl": "img-2",
-        "order": 2,
-        "content": "... ...",
-        "color": "red"
+        "imgUrl": "assets/images/test_slide-2",
+        "order": 2
+      },
+      {
+        "imgUrl": "assets/images/test_slide-3",
+        "order": 3
       }
     ]
   }
