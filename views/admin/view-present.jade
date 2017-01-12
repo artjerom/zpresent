@@ -1,0 +1,34 @@
+extends admin
+
+block content-admin
+    h2 Презентация: #{name}
+    .presentations
+        each slide in data.slides
+            .ui.card
+                .image
+                    img(src=slide.imgUrl)
+                .content
+                    .description
+                        p= slide.content
+                .ui.form
+                    .field
+                        textarea(rows='3' placeholder='текст слайда ...' style='resize: none')
+                select(name='order' class='ui dropdown')
+                    option(value='') Порядок
+                    each i in slide
+                        option(value=i.order)= i.order
+    //.ui.modal#modalAddSlide
+        i.close.icon
+        .header
+            | Новый слайд
+        .image.content
+            .ui.medium
+                img(src='#')
+            .ui.form
+                .field
+                    textarea(rows='5' placeholder='текст слайда ...' style='resize: none')
+        .actions
+            .ui.black.deny.button
+                | Отмена
+            .ui.positive.button.icon
+                | Создать

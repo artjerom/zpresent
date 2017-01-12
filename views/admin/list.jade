@@ -4,7 +4,7 @@ block content-admin
     .presentations
         each p in data
             .ui.card
-                a.image()
+                a.image(href='/admin/present/' + p.name)
                     img(src='/' + p.slides[0].imgUrl)
                 .content
-                    a.header()= p.name
+                    a.header(href='/admin/present/' + p.name)= p.name

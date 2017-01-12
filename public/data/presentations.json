@@ -5,13 +5,13 @@
       {
         "imgUrl": "img",
         "order": 1,
-        "content": "...",
+        "content": "Контент 1 слайда",
         "color": "#fff"
       },
       {
         "imgUrl": "img-2",
         "order": 2,
-        "content": "... ...",
+        "content": "Контент 2 слайда ...",
         "color": "red"
       }
     ]

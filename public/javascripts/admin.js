@@ -12,6 +12,12 @@ $(function () {
         $('#jsMenu').find('a[href="/admin/'+ page +'"]').addClass('active');
     }
 
+    $('#addSlide').on({
+        'click': function () {
+            $('#modalAddSlide').show();
+        }
+    });
+
     // Вывод изображений
     function handleFileSelect(ev) {
         var files = ev.target.files;
@@ -25,7 +31,6 @@ $(function () {
             var rd = new FileReader();
 
             rd.onload = (function (file) {
-                console.log(file);
                 return function (e) {
                     var li = document.createElement('li');
                     li.innerHTML = ['<img class="thumb" src="', e.target.result,
@@ -37,10 +42,6 @@ $(function () {
             rd.readAsDataURL(f);
         }
     }
-
-    $.getJSON('/data/presentations.json', function (data) {
-        // console.log(data);
-    });
 
     // Отслеживаем изменение upImages
     if ($('*').is('#upImages')) {

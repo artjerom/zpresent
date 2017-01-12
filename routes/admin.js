@@ -6,6 +6,7 @@ var fs = require('fs');
 var bodyParser = require('body-parser');
 
 var dataPresent = require(__dirname + '/../public/data/presentations.json');
+var dataImages = require(__dirname + '/../public/data/images.json');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
@@ -21,7 +22,19 @@ router.get('/upload', function (req, res) {
   });
 });
 
+router.get('/present/:name', function (req, res) {
+  var model = dataPresent;
+  res.render('admin/view-present', {
+    name: req.params.name,
+    viewPresent: true,
+    data: model.find(function () {
+      return name = req.params.name;
+    })
+  });
+});
+
 router.post('/api/upload', function(req, res) {
+  res.redirect('/admin');
   var form = new formidable.IncomingForm();
 
   form.multiples = true;
@@ -30,17 +43,29 @@ router.post('/api/upload', function(req, res) {
 
   form.on('file', function(field, file) {
     fs.rename(file.path, path.join(form.uploadDir, file.name));
-  });
+    dataPresent.newImg = path.join(form.uploadDir, file.name);
 
-  form.on('error', function(err) {
-    console.log('Ошибка: \n' + err);
-  });
+    fs.readFile(__dirname + '/../public/data/images.json', function (err, data) {
+      var json = JSON.parse(data);
 
-  form.on('end', function() {
-    res.redirect('/admin');
+      json.push({
+        "name": file.name,
+        "imgUrl": dataPresent.newImg
+      });
+
+      fs.writeFile(__dirname + '/../public/data/images.json', JSON.stringify(json, null, 4), function (err) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('ok ...');
+        }
+      });
+    });
+
   });
 
   form.parse(req);
+
 });
 
 module.exports = router;
