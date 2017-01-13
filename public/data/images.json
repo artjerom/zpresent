@@ -1,12 +1,18 @@
 [
     {
-        "imgUrl": "/home/fred/sandbox/zpresent/public/images/i-icon.png"
+        "name": "test_slide-1.jpg",
+        "imgUrl": "/images/test_slide-1.jpg"
     },
     {
-        "imgUrl": "/home/fred/sandbox/zpresent/public/images/i-menu.png"
+        "name": "test_slide-2.jpg",
+        "imgUrl": "/images/test_slide-2.jpg"
     },
     {
-        "name": "screencapture-zaymigo-lc-borrow4-1478695771060.png",
-        "imgUrl": "/home/fred/sandbox/zpresent/public/images/screencapture-zaymigo-lc-borrow4-1478695771060.png"
+        "name": "test_slide-3.jpg",
+        "imgUrl": "/images/test_slide-3.jpg"
+    },
+    {
+        "name": "Main_site_borrower_head_1-1(base).png",
+        "imgUrl": "/images/Main_site_borrower_head_1-1(base).png"
     }
 ]

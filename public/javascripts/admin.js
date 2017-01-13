@@ -43,9 +43,38 @@ $(function () {
         }
     }
 
+    // Создание презентации
+    $('#createPresentForm').submit(function (e) {
+        e.preventDefault();
+
+        var images = [],
+            json = $.getJSON('../data/presentations.json', function (data) {}),
+            checks = $('input#checkImgCreate');
+
+        for (var i = 0; i < checks.length; i++) {
+            if ($($(checks)[i]).is(':checked')) {
+                images.push($($(checks)[i]).attr('data-img'));
+            }
+        }
+
+        console.log(json);
+
+        var data = {
+            // id: num,
+            name: $('#namePresent').val(),
+            active: false,
+            slides: images
+        };
+
+        $.post('/admin/api/create', data);
+    });
+
     // Отслеживаем изменение upImages
     if ($('*').is('#upImages')) {
         document.getElementById('upImages').addEventListener('change', handleFileSelect, false);
     }
+
+    // fancybox
+    $("a#single_image").fancybox();
 
 });

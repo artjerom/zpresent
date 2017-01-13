@@ -2,3 +2,16 @@ extends admin
 
 block content-admin
     .create-main
+        form.ui.form#createPresentForm(action='api/create' method='POST')
+            .field
+                label(for='namePresent') Имя
+                input(type='text' name='namePresent' id='namePresent' placeholder='Имя')
+            .images
+                each img in dataImages
+                    .item-img
+                        a#single_image(href=img.imgUrl): img(src=img.imgUrl)
+                        .ui.checkbox
+                            input#checkImgCreate(type='checkbox' name='checkSlide' data-img=img.imgUrl)
+                            label
+            .create_present-btn
+                input#createPresentBtn(type='submit' value='Создать').positive.ui.button
