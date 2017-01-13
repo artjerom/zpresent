@@ -3,10 +3,12 @@ extends layout
 block main
   .reveal
     .slides
+      - function sortNumber (a, b) {return a - b};
       each p in data
         - if (p.active)
-          each slide in p.slides
-            section(data-background=slide.imgUrl)
+          - var length = p.slides.length
+          - for (var i = 0; i < length; i++)
+              section(data-background=p.slides[i].imgUrl)
 
   a.admin(href='/admin')
     i.desktop.icon

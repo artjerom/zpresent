@@ -21,7 +21,7 @@
     "slides": [
       {
         "imgUrl": "/images/test_slide-1.jpg",
-        "order": 1
+        "order": 3
       },
       {
         "imgUrl": "/images/test_slide-2.jpg",
@@ -29,7 +29,7 @@
       },
       {
         "imgUrl": "/images/test_slide-3.jpg",
-        "order": 3
+        "order": 1
       }
     ]
   }
