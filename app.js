@@ -6,12 +6,16 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var request = require('request');
+
+var db = require('./bin/db');
+
 var fs = require('fs');
-
 var routes = require('./routes/index');
-var admin = require('./routes/admin');
 
+var admin = require('./routes/admin');
 var app = express();
+
+var MongoClient = require('mongodb').MongoClient;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -57,5 +61,6 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
 
 module.exports = app;
