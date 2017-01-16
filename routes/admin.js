@@ -19,21 +19,9 @@ router.route('/present/:id')
     // Получить презентацию
     .get(presentCtrl.findById)
     // Изменить презентацию
-    .put(presentCtrl.update);
+    .put(presentCtrl.update)
     // Удалить презентацию
-    .delete( function (req, res) {
-        db.get().collection('present').deleteOne(
-            {_id: ObjectID(req.params.id)},
-            function (err, result) {
-                if (err) {
-                    console.log(err);
-                    return res.status(500).send(500);
-                }
-
-                res.status(200).send(200);
-            }
-        );
-    });
+    .delete(presentCtrl.delete);
 /* End route */
 
 // Создать презентацию
