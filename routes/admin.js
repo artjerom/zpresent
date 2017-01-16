@@ -5,68 +5,40 @@ var formidable = require('formidable');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 
-// var PresentRepository = require(__dirname + '/models/presentations.js');
-var dataPresent = require(__dirname + '/../public/data/presentations.json');
-var dataImages = require(__dirname + '/../public/data/images.json');
+var presentCtrl = require('./../controllers/presents');
+
+var ObjectID = require('mongodb').ObjectID;
 var db = require('./../bin/db');
 
 // Роуты '/admin'
 
-router.get(['/', '/present'], function (req, res) {
-  db.get().collection('present').find().toArray(function (err, docs) {
-      if (err) {
-          console.log(err);
-          return res.status(500).send('ошибка mongo');
-      }
+router.get(['/', '/present'], presentCtrl.all);
 
-      res.send(docs);
-  });
-});
+/* Route: /admin/present/:id */
+router.route('/present/:id')
+    // Получить презентацию
+    .get(presentCtrl.findById)
+    // Изменить презентацию
+    .put(presentCtrl.update);
+    // Удалить презентацию
+    .delete( function (req, res) {
+        db.get().collection('present').deleteOne(
+            {_id: ObjectID(req.params.id)},
+            function (err, result) {
+                if (err) {
+                    console.log(err);
+                    return res.status(500).send(500);
+                }
 
-router.get('/present/:id', function (req, res) {
-  var present = dataPresent.find(function (present) {
-    return present.id === Number(req.params.id);
-  });
-
-  if (req.params.id > dataPresent.length) {
-    res.status(404).send('Презентация не найдена ...');
-  } else {
-    res.send(present);
-  }
-});
-
-router.post('/present', function (req, res) {
-  var present = {
-    name: req.body.name
-  };
-
-  db.get().collection('present').insert(present, function (err, result) {
-      if (err) {
-          console.log(err)
-          res.status(500).send('ошибка');
-      }
-
-      res.send(present);
-  });
-
-});
-
-router.put('/present/:id', function (req, res) {
-    var present = dataPresent.find(function (present) {
-        return present.id === Number(req.params.id);
+                res.status(200).send(200);
+            }
+        );
     });
+/* End route */
 
-    present.name = req.body.name;
-    res.status(200).send(present);
-});
+// Создать презентацию
+router.post('/present', presentCtrl.create);
 
-router.delete('/present/:id', function (req ,res) {
-  dataPresent = dataPresent.filter(function (present) {
-    return present.id !== Number(req.params.id);
-  });
-
-  res.status(200).send(dataPresent);
-});
 
 /*router.get('/', function(req, res) {
   res.render('admin/list', {
