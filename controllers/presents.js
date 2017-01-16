@@ -7,7 +7,10 @@ exports.all = function (req, res) {
             return res.status(500).send(500);
         }
 
-        res.send(docs);
+        res.render('admin/list', {
+            title: "Список презентаций",
+            data: docs
+        });
     });
 };
 
@@ -18,13 +21,18 @@ exports.findById = function (req, res) {
             return res.status(500).send(500);
         }
 
-        res.send(doc);
+        res.render('admin/view-present', {
+            addSlide: true,
+            data: doc
+        });
     });
 };
 
 exports.create = function (req, res) {
     var present = {
-        name: req.body.name
+        name: req.body.name,
+        active: false,
+        slides: req.body.slides
     };
 
     Presents.create(present, function (err, result) {
@@ -39,7 +47,8 @@ exports.create = function (req, res) {
 
 exports.update = function (req, res) {
     Presents.update(req.params.id, {
-       name: req.body.name
+       name: req.body.name,
+       slides: req.body.slides
     }, function (err, result) {
         if (err) {
             console.log(err);

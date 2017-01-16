@@ -10,8 +10,6 @@ var presentCtrl = require('./../controllers/presents');
 var ObjectID = require('mongodb').ObjectID;
 var db = require('./../bin/db');
 
-// Роуты '/admin'
-
 router.get(['/', '/present'], presentCtrl.all);
 
 /* Route: /admin/present/:id */
