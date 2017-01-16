@@ -5,12 +5,28 @@ var formidable = require('formidable');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 
-// var PresentRepository = require(__dirname + '/models/presentations.js');
-var dataPresent = require(__dirname + '/../public/data/presentations.json');
-var dataImages = require(__dirname + '/../public/data/images.json');
+var presentCtrl = require('./../controllers/presents');
+
+var ObjectID = require('mongodb').ObjectID;
+var db = require('./../bin/db');
+
+router.get(['/', '/present'], presentCtrl.all);
+
+/* Route: /admin/present/:id */
+router.route('/present/:id')
+    // Получить презентацию
+    .get(presentCtrl.findById)
+    // Изменить презентацию
+    .put(presentCtrl.update)
+    // Удалить презентацию
+    .delete(presentCtrl.delete);
+/* End route */
+
+// Создать презентацию
+router.post('/present', presentCtrl.create);
 
 
-router.get('/', function(req, res) {
+/*router.get('/', function(req, res) {
   res.render('admin/list', {
     title: 'Список презентаций',
     data: dataPresent
@@ -76,6 +92,6 @@ router.post('/api/upload', function(req, res) {
 
   form.parse(req);
 
-});
+});*/
 
 module.exports = router;

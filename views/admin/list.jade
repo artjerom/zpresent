@@ -4,7 +4,14 @@ block content-admin
     .main
         each p in data
             .ui.card
-                a.image(href='/admin/present/' + p.id)
+                a.image(href='/admin/present/' + p._id)
                     img(src=p.slides[0].imgUrl)
                 .content
-                    a.header(href='/admin/present/' + p.id)= p.name
+                    a.header(href='/admin/present/' + p._id)= p.name
+                - if (typeof (p.active) !== typeof (undefined))
+                    .ui.two.buttons
+                        .ui.basic.green.button Выбрать
+                        .ui.basic.red.button Удалить
+                - else
+                    .extra.content
+                        span Активная

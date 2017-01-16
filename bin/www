@@ -3,17 +3,40 @@ var debug = require('debug')('my-application');
 var app = require('../app');
 var port = 3000;
 
+var db = require('./db');
+
 app.set('port', process.env.PORT || port);
 
-var io = require('socket.io').listen(app.listen(port, function () {
-  debug('Express server listening on port ' + port);
-}));
+db.connect('mongodb://localhost:27017/papi', function (err, database) {
+    if (err) {
+        return console.log(err);
+    }
 
-var present = io.on('connection', function (socket) {
+    db = database;
+
+    var io = require('socket.io').listen(app.listen(port, function () {
+        debug('Express server listening on port ' + port);
+    }));
+
+    var present = io.on('connection', function (socket) {
+
+        // Переключение слайдов
+        socket.on('change-slide', function (data) {
+            present.emit('nav', {hash: data.hash});
+        });
+
+    });
+});
+
+/*var io = require('socket.io').listen(app.listen(port, function () {
+  debug('Express server listening on port ' + port);
+}));*/
+
+/*var present = io.on('connection', function (socket) {
 
   // Переключение слайдов
   socket.on('change-slide', function (data) {
     present.emit('nav', {hash: data.hash});
   });
 
-});
+});*/
