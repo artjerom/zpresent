@@ -25,32 +25,12 @@ router.route('/present/:id')
 // Создать презентацию
 router.post('/present', presentCtrl.create);
 
-
-/*router.get('/', function(req, res) {
-  res.render('admin/list', {
-    title: 'Список презентаций',
-    data: dataPresent
-  });
-});
-
 router.get('/upload', function (req, res) {
   res.render('admin/upload', {
     title: "Загрузить изображение"
   });
 });
 
-router.get('/present/:id', function (req, res) {
-  var presentId = dataPresent,
-      id = req.params.id;
-  var filtered = presentId.filter(function (n) {
-    return n.id == req.params.id;
-  });
-
-  res.render('admin/view-present', {
-    addSlide: true,
-    data: filtered[0]
-  });
-});
 
 router.get('/create', function (req, res) {
   res.render('admin/create', {
@@ -92,6 +72,6 @@ router.post('/api/upload', function(req, res) {
 
   form.parse(req);
 
-});*/
+});
 
 module.exports = router;
