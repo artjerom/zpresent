@@ -48,4 +48,20 @@ $(function () {
         document.getElementById('upImages').addEventListener('change', handleFileSelect, false);
     }
 
+    // Просмотр всех презентаций
+
+    // удалить
+    $('#jsPresentDelete').on('click', function (e) {
+        e.preventDefault();
+
+        var id = $(this).attr('data-present');
+
+        console.log("admin/present/" + (id.replace('"', '')).replace('"', ''));
+
+        $.ajax({
+            url: "admin/present/" + (id.replace('"', '')).replace('"', ''),
+            type: "DELETE"
+        });
+    });
+
 });

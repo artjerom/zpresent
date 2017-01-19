@@ -10,8 +10,8 @@ block content-admin
                     a.header(href='/admin/present/' + p._id)= p.name
                 - if (typeof (p.active) !== typeof (undefined))
                     .ui.two.buttons
-                        .ui.basic.green.button Выбрать
-                        .ui.basic.red.button Удалить
+                        .ui.basic.green.button#jsPresentSelect(data-present=p._id) Выбрать
+                        .ui.basic.red.button#jsPresentDelete(data-present=p._id) Удалить
                 - else
                     .extra.content
                         span Активная
