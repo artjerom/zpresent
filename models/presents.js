@@ -7,6 +7,12 @@ exports.all = function (cb) {
     });
 };
 
+exports.findActive = function(cb) {
+    db.get().collection('present').findOne({active: true}, function (err, doc) {
+        cb(err, doc);
+    });
+};
+
 exports.findById = function (id, cb) {
     db.get().collection('present').findOne({_id: ObjectID(id)}, function (err, doc) {
         cb(err, doc);

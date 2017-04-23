@@ -29,9 +29,10 @@ exports.findById = function (req, res) {
 };
 
 exports.create = function (req, res) {
+    console.log(req);
     var present = {
         name: req.body.name,
-        active: false,
+        active: req.body.active ? true : false,
         slides: req.body.slides
     };
 
@@ -40,10 +41,21 @@ exports.create = function (req, res) {
             console.log(err);
             return res.status(500).send(500);
         }
-
-        res.send(present);
     });
+
+  res.send(present);
 };
+
+/*
+* {
+ "name": "first-present",
+ "active": true,
+ "slides": [
+ slide: {"order": 1, "imgUrl": "/path/to/first.png" },
+ slide: {"order": 2, "imgUrl": "/path/to/first-2.png"  }
+ ]
+ }
+* */
 
 exports.update = function (req, res) {
     Presents.update(req.params.id, {
