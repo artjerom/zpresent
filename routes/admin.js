@@ -49,24 +49,6 @@ router.post('/api/upload', function(req, res) {
 
   form.on('file', function(field, file) {
     fs.rename(file.path, path.join(form.uploadDir, file.name));
-    dataPresent.newImg = path.join(form.uploadDir, file.name);
-
-    fs.readFile(__dirname + '/../public/data/images.json', function (err, data) {
-      var json = JSON.parse(data);
-
-      json.push({
-        "name": file.name,
-        "imgUrl": dataPresent.newImg
-      });
-
-      fs.writeFile(__dirname + '/../public/data/images.json', JSON.stringify(json, null, 4), function (err) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log('ok ...');
-        }
-      });
-    });
 
   });
 

@@ -3,7 +3,10 @@ extends layout
 block main
   .reveal
     .slides
-      each p in data
+      each slide in data.slides
+        p= slide.order
+        section(data-background=slide.imgUrl)
+      // each p in data
         - if (p.active)
           each slide in p.slides
             section(data-background=slide.imgUrl)
